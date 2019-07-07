@@ -1,3 +1,10 @@
+<script>
+import Button from './Button.svelte';
+    export let productTitle;
+    export let productDescription;
+    export let productPrice;
+</script>
+
 <style>
     div {
         margin: 1rem;
@@ -21,19 +28,11 @@
      p {
          margin: 0.25rem 0;
      }
-
-     button {
-         font-size: inherit;
-         padding: 0.15rem 0.5rem;
-         background: #d10057;
-         color: white;
-         cursor: pointer;
-     }
 </style>
 
 <div>
-    <h1>TITLE</h1>
-    <h2>PRICE</h2>
-    <p>DESCRIPTION</p>
-    <button>Add to cart</button>
+    <h1>{productTitle}</h1>
+    <h2>${productPrice}</h2>
+    <p>{productDescription}</p>
+    <Button>Add to Cart</Button>
 </div>
