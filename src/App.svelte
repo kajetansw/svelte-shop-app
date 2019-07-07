@@ -7,6 +7,7 @@
     let description = 'Description';
 
     let products = [];
+    let cartItems = [];
 
     function setTitle(event) {
         title = event.target.value;
@@ -15,6 +16,12 @@
     function createProduct() {
         const newProduct = { title, price, description };
         products = [newProduct, ...products];
+    }
+
+    function addToCart(event) {
+        const title = event.detail;
+        cartItems = [...cartItems, products.find(prod => prod.title === title)];
+        console.log(cartItems);
     }
 </script>
 
@@ -51,17 +58,18 @@
     <Button on:click={createProduct}>Create Product</Button>
 </section>
 
-{#if products.length === 0}
-    <p>No products were added yet!</p>
+<section>
+    {#if products.length === 0}
+        <p>No products were added yet!</p>
 
-    {:else}
-    {#each products as product}
-        <Product 
-            productTitle={product.title} 
-            productPrice={product.price} 
-            productDescription={product.description} 
-        />
-    {/each}
-{/if}
-
-
+        {:else}
+        {#each products as product}
+            <Product 
+                productTitle={product.title} 
+                productPrice={product.price} 
+                productDescription={product.description}
+                on:addCart={addToCart}
+            />
+        {/each}
+    {/if}
+</section>
