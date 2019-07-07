@@ -1,6 +1,7 @@
 <script>
     import Product from './Product.svelte';
     import Button from './Button.svelte';
+    import Cart from './Cart.svelte';
 
     let title = 'Sample';
     let price = 0;
@@ -21,7 +22,6 @@
     function addToCart(event) {
         const title = event.detail;
         cartItems = [...cartItems, products.find(prod => prod.title === title)];
-        console.log(cartItems);
     }
 </script>
 
@@ -35,6 +35,12 @@
         width: 100%;
     }
 </style>
+
+<section>
+    <Cart items={cartItems} />
+</section>
+
+<hr>
 
 <section>
     <div>
