@@ -1,7 +1,13 @@
 <script>
     import Product from './Product.svelte';
 
-	export let name;
+    let title = '';
+    let price = 0;
+    let description = '';
+
+    function setTitle(event) {
+        title = event.target.value;
+    }
 </script>
 
 <style>
@@ -18,15 +24,20 @@
 <section>
     <div>
         <label for="title">Title</label>
-        <input id="title" type="text">
+        <input id="title" type="text" value={title} on:input={setTitle}>
     </div>
     <div>
         <label for="price">Price</label>
-        <input id="price" type="number">
+        <input id="price" type="number" value={price} bind:value={price}>
     </div>
     <div>
         <label for="description">Description</label>
-        <textarea id="description" rows="3" />
+        <textarea 
+            id="description" 
+            rows="3" 
+            value={description} 
+            bind:value={description}
+        />
     </div>
 </section>
 
